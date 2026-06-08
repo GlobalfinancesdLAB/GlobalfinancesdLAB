@@ -14,13 +14,25 @@
 
         body {
             min-height: 100vh;
-            background-image: url('fond-global.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background-color: #0a0c12;
+            background-image: url('fond-global.png');
+        }
+
+        @media (min-width: 768px) {
+            body {
+                background-image: url('fond-pc.png');
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                background-image: url('fond-mobile.png');
+            }
         }
 
         .social-dock {
