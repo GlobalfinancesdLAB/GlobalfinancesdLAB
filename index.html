@@ -14,25 +14,30 @@
 
         body {
             min-height: 100vh;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: #0a0c12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background-color: #0a0c12;
-            background-image: url('fond-global.png');
+            padding: 1rem;
         }
 
-        @media (min-width: 768px) {
-            body {
-                background-image: url('fond-pc.png');
-            }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1400px;
         }
 
-        @media (max-width: 767px) {
-            body {
-                background-image: url('fond-mobile.png');
-            }
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .social-dock {
@@ -161,6 +166,9 @@
     </style>
 </head>
 <body>
+    <div class="main-container">
+        <img src="fond-mobile.png" alt="Global Finance SD" class="hero-image">
+    </div>
     <div class="social-dock">
         <div class="dock-menu">
             <a href="https://x.com/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="dock-link link-x">
