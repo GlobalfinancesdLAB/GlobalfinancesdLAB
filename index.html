@@ -11,8 +11,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             min-height: 100vh;
+            background-image: url('fond-global.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -20,28 +22,21 @@
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background-color: #0a0c12;
         }
-        @media (min-width: 768px) {
-            body {
-                background-image: url('fond-pc.png');
-            }
-        }
-        @media (max-width: 767px) {
-            body {
-                background-image: url('fond-mobile.png');
-            }
-        }
+
         .social-dock {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             z-index: 1000;
         }
+
         .dock-menu {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             align-items: flex-end;
         }
+
         .dock-link {
             display: flex;
             align-items: center;
@@ -63,10 +58,12 @@
             opacity: 0;
             animation: slideGlow 0.55s ease forwards;
         }
+
         .dock-link i {
             font-size: 1.4rem;
             transition: transform 0.25s ease, color 0.2s;
         }
+
         @keyframes slideGlow {
             0% {
                 opacity: 0;
@@ -79,18 +76,22 @@
                 filter: blur(0);
             }
         }
+
         .dock-link:nth-child(1) { animation-delay: 0.05s; }
         .dock-link:nth-child(2) { animation-delay: 0.15s; }
         .dock-link:nth-child(3) { animation-delay: 0.25s; }
+
         .dock-link:hover {
             transform: translateX(-10px) scale(1.03);
             background: rgba(0, 0, 0, 0.85);
             border-color: rgba(255, 255, 255, 0.65);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
+
         .dock-link:hover i {
             transform: scale(1.12);
         }
+
         .link-x:hover {
             background: #0a0a0a;
             border-color: #1da1f2;
@@ -99,6 +100,7 @@
             color: #1da1f2;
             text-shadow: 0 0 6px #1da1f280;
         }
+
         .link-tg:hover {
             background: #0f2b36;
             border-color: #26a5e4;
@@ -107,6 +109,7 @@
             color: #26a5e4;
             text-shadow: 0 0 5px #26a5e4aa;
         }
+
         @media (max-width: 640px) {
             .social-dock {
                 bottom: 1.2rem;
@@ -124,6 +127,7 @@
                 font-size: 1rem;
             }
         }
+
         @media (max-width: 480px) {
             .dock-link {
                 padding: 0.45rem 1rem 0.45rem 0.8rem;
@@ -131,6 +135,7 @@
                 gap: 0.5rem;
             }
         }
+
         @media (prefers-reduced-motion: reduce) {
             .dock-link {
                 animation: none;
