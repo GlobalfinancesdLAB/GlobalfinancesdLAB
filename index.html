@@ -1,6 +1,3 @@
-Voici la page HTML épurée, sans aucun texte ni explication. L'image `fond-global.png` est utilisée en arrière-plan plein écran.
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,10 +17,92 @@ Voici la page HTML épurée, sans aucun texte ni explication. L'image `fond-glob
             background-repeat: no-repeat;
             background-attachment: fixed;
             min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-blend-mode: overlay;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .social-links-container {
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+        }
+        .social-links {
+            display: inline-flex;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .social-link i {
+            font-style: normal;
+            font-weight: bold;
+        }
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        .link-x:hover {
+            background: #000000;
+            border-color: #1DA1F2;
+            color: #1DA1F2;
+        }
+        .link-telegram-announce:hover,
+        .link-telegram-group:hover {
+            background: #0088cc;
+            border-color: #ffffff;
+            color: white;
+        }
+        @media (max-width: 700px) {
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+                border-radius: 30px;
+                background: rgba(0, 0, 0, 0.85);
+                margin: 0 15px;
+            }
+            .social-link {
+                justify-content: center;
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+            .social-links-container {
+                bottom: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="social-links-container">
+        <div class="social-links">
+            <a href="https://x.com/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link link-x">
+                <i>🐦</i> X (Twitter)
+            </a>
+            <a href="https://t.me/GFannouncement" target="_blank" rel="noopener noreferrer" class="social-link link-telegram-announce">
+                <i>📢</i> Telegram Annonces
+            </a>
+            <a href="https://t.me/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link link-telegram-group">
+                <i>💬</i> Telegram Groupe
+            </a>
+        </div>
+    </div>
 </body>
 </html>
-```
