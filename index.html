@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Global Finance SD</title>
-    <!-- Font Awesome 6 (gratuit, icônes propres) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -20,26 +19,22 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             font-family: 'Segoe UI', system-ui, 'Poppins', sans-serif;
-            /* Léger assombrissement pour améliorer la lisibilité des liens (optionnel) */
             background-color: rgba(0, 0, 0, 0.2);
             background-blend-mode: overlay;
         }
 
-        /* Image de fond pour les écrans larges (PC) */
         @media (min-width: 768px) {
             body {
-                background-image: url('fond-pc.png');  /* Remplacez par votre fichier PC */
+                background-image: url('fond-pc.png');
             }
         }
 
-        /* Image de fond pour les mobiles (moins de 768px) */
         @media (max-width: 767px) {
             body {
-                background-image: url('fond-mobile.png'); /* Remplacez par votre fichier mobile */
+                background-image: url('fond-mobile.png');
             }
         }
 
-        /* Conteneur des liens – positionné en bas, discret mais accessible */
         .links-wrapper {
             position: fixed;
             bottom: 30px;
@@ -47,7 +42,6 @@
             z-index: 20;
         }
 
-        /* Menu des liens animés */
         .social-menu {
             display: flex;
             flex-direction: column;
@@ -55,7 +49,6 @@
             align-items: flex-end;
         }
 
-        /* Chaque lien : design "glassmorphique" + animation */
         .social-link {
             display: inline-flex;
             align-items: center;
@@ -73,15 +66,15 @@
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transform-origin: right;
+            animation: slideFadeIn 0.5s ease forwards;
+            opacity: 0;
         }
 
-        /* Icônes FontAwesome */
         .social-link i {
             font-size: 1.3rem;
             transition: transform 0.2s ease;
         }
 
-        /* Animation au survol : translation, changement de couleur, renforcement du flou */
         .social-link:hover {
             transform: translateX(-8px) scale(1.02);
             background: rgba(0, 0, 0, 0.8);
@@ -93,7 +86,6 @@
             transform: scale(1.1);
         }
 
-        /* Couleurs spécifiques par réseau (au survol uniquement) */
         .social-link.x:hover {
             background: #000000;
             border-color: #1DA1F2;
@@ -110,7 +102,6 @@
             color: #26A5E4;
         }
 
-        /* Animation d’entrée (fade + slide) au chargement */
         @keyframes slideFadeIn {
             from {
                 opacity: 0;
@@ -122,23 +113,14 @@
             }
         }
 
-        .social-link {
-            animation: slideFadeIn 0.5s ease forwards;
-            opacity: 0; /* départ invisible */
-        }
-
-        /* Délais différents pour chaque lien (effet cascade) */
         .social-link:nth-child(1) { animation-delay: 0.1s; }
         .social-link:nth-child(2) { animation-delay: 0.2s; }
         .social-link:nth-child(3) { animation-delay: 0.3s; }
 
-        /* Version mobile : on réduit la taille et on les place en bas à gauche ou centré ? 
-           Pour ne pas cacher l’image, on garde à droite mais avec plus de marge */
         @media (max-width: 640px) {
             .links-wrapper {
                 bottom: 20px;
                 right: 20px;
-                left: auto;
             }
             .social-link {
                 padding: 8px 16px;
@@ -150,7 +132,6 @@
             }
         }
 
-        /* Petit ajustement pour les très petits écrans en portrait */
         @media (max-width: 480px) {
             .links-wrapper {
                 bottom: 15px;
@@ -166,17 +147,14 @@
 <body>
     <div class="links-wrapper">
         <div class="social-menu">
-            <!-- Lien X (Twitter) -->
             <a href="https://x.com/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link x">
                 <i class="fab fa-twitter"></i>
                 <span>X (Twitter)</span>
             </a>
-            <!-- Lien Telegram (GFannouncement) -->
             <a href="https://t.me/GFannouncement" target="_blank" rel="noopener noreferrer" class="social-link telegram">
                 <i class="fab fa-telegram-plane"></i>
                 <span>Annonces TG</span>
             </a>
-            <!-- Lien Telegram (GlobalFinanceSD) -->
             <a href="https://t.me/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link telegram">
                 <i class="fab fa-telegram-plane"></i>
                 <span>Groupe TG</span>
