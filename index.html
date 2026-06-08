@@ -2,105 +2,184 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Global Finance SD</title>
+    <!-- Font Awesome 6 (gratuit, icônes propres) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background-image: url('fond-global.png');
+            min-height: 100vh;
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.3);
+            font-family: 'Segoe UI', system-ui, 'Poppins', sans-serif;
+            /* Léger assombrissement pour améliorer la lisibilité des liens (optionnel) */
+            background-color: rgba(0, 0, 0, 0.2);
             background-blend-mode: overlay;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .social-links-container {
+
+        /* Image de fond pour les écrans larges (PC) */
+        @media (min-width: 768px) {
+            body {
+                background-image: url('fond-pc.png');  /* Remplacez par votre fichier PC */
+            }
+        }
+
+        /* Image de fond pour les mobiles (moins de 768px) */
+        @media (max-width: 767px) {
+            body {
+                background-image: url('fond-mobile.png'); /* Remplacez par votre fichier mobile */
+            }
+        }
+
+        /* Conteneur des liens – positionné en bas, discret mais accessible */
+        .links-wrapper {
             position: fixed;
-            bottom: 25px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
+            bottom: 30px;
+            right: 30px;
+            z-index: 20;
         }
-        .social-links {
-            display: inline-flex;
-            gap: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+
+        /* Menu des liens animés */
+        .social-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
         }
+
+        /* Chaque lien : design "glassmorphique" + animation */
         .social-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            background: rgba(20, 25, 40, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 10px 20px 10px 18px;
             color: white;
             text-decoration: none;
-            font-size: 1rem;
             font-weight: 500;
-            padding: 8px 18px;
-            border-radius: 40px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform-origin: right;
         }
+
+        /* Icônes FontAwesome */
         .social-link i {
-            font-style: normal;
-            font-weight: bold;
+            font-size: 1.3rem;
+            transition: transform 0.2s ease;
         }
+
+        /* Animation au survol : translation, changement de couleur, renforcement du flou */
         .social-link:hover {
-            transform: translateY(-3px);
+            transform: translateX(-8px) scale(1.02);
+            background: rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
-        .link-x:hover {
+
+        .social-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Couleurs spécifiques par réseau (au survol uniquement) */
+        .social-link.x:hover {
             background: #000000;
             border-color: #1DA1F2;
+        }
+        .social-link.x:hover i {
             color: #1DA1F2;
         }
-        .link-telegram-announce:hover,
-        .link-telegram-group:hover {
-            background: #0088cc;
-            border-color: #ffffff;
-            color: white;
+
+        .social-link.telegram:hover {
+            background: #1e2a3a;
+            border-color: #26A5E4;
         }
-        @media (max-width: 700px) {
-            .social-links {
-                flex-direction: column;
-                gap: 10px;
-                padding: 15px;
-                border-radius: 30px;
-                background: rgba(0, 0, 0, 0.85);
-                margin: 0 15px;
+        .social-link.telegram:hover i {
+            color: #26A5E4;
+        }
+
+        /* Animation d’entrée (fade + slide) au chargement */
+        @keyframes slideFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .social-link {
+            animation: slideFadeIn 0.5s ease forwards;
+            opacity: 0; /* départ invisible */
+        }
+
+        /* Délais différents pour chaque lien (effet cascade) */
+        .social-link:nth-child(1) { animation-delay: 0.1s; }
+        .social-link:nth-child(2) { animation-delay: 0.2s; }
+        .social-link:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Version mobile : on réduit la taille et on les place en bas à gauche ou centré ? 
+           Pour ne pas cacher l’image, on garde à droite mais avec plus de marge */
+        @media (max-width: 640px) {
+            .links-wrapper {
+                bottom: 20px;
+                right: 20px;
+                left: auto;
             }
             .social-link {
-                justify-content: center;
-                font-size: 0.9rem;
-                padding: 8px 12px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+                gap: 8px;
             }
-            .social-links-container {
+            .social-link i {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Petit ajustement pour les très petits écrans en portrait */
+        @media (max-width: 480px) {
+            .links-wrapper {
                 bottom: 15px;
+                right: 15px;
+            }
+            .social-link {
+                padding: 6px 12px;
+                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="social-links-container">
-        <div class="social-links">
-            <a href="https://x.com/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link link-x">
-                <i>🐦</i> X (Twitter)
+    <div class="links-wrapper">
+        <div class="social-menu">
+            <!-- Lien X (Twitter) -->
+            <a href="https://x.com/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link x">
+                <i class="fab fa-twitter"></i>
+                <span>X (Twitter)</span>
             </a>
-            <a href="https://t.me/GFannouncement" target="_blank" rel="noopener noreferrer" class="social-link link-telegram-announce">
-                <i>📢</i> Telegram Annonces
+            <!-- Lien Telegram (GFannouncement) -->
+            <a href="https://t.me/GFannouncement" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Annonces TG</span>
             </a>
-            <a href="https://t.me/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link link-telegram-group">
-                <i>💬</i> Telegram Groupe
+            <!-- Lien Telegram (GlobalFinanceSD) -->
+            <a href="https://t.me/GlobalFinanceSD" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Groupe TG</span>
             </a>
         </div>
     </div>
